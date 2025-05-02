@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+	fx:controller="ShowOrdersController" prefWidth="600" prefHeight="400"
+	stylesheets="@showorders.css">
+	<children>
+		<VBox spacing="15" AnchorPane.topAnchor="20"
+			AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+			<HBox alignment="CENTER">
+				<Label text="Orders Page" styleClass="page-title" />
+			</HBox>
+
+
+
+			<TableView fx:id="ordersTable" prefHeight="280">
+				<columns>
+					<TableColumn fx:id="orderNumberCol" text="Order #"
+						prefWidth="150" />
+					<TableColumn fx:id="parkingSpaceCol"
+						text="Parking Space" prefWidth="200" />
+					<TableColumn fx:id="orderDateCol" text="Order Date"
+						prefWidth="250" />
+				</columns>
+			</TableView>
+
+			<HBox alignment="CENTER_LEFT" spacing="10">
+				<Button text="Back" onAction="#goBack"
+					styleClass="back-button" />
+			</HBox>
+		</VBox>
+	</children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="MainPageController"
+            prefWidth="600" prefHeight="400" stylesheets="@mainpage.css">
+    <children>
+        <VBox spacing="20" alignment="TOP_CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <!-- Title -->
+            <Label text="Main Page" styleClass="page-title"/>
+
+            <!-- Navigation Buttons -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button text="Connection info" onAction="#handleConnectionInfo" styleClass="nav-button"/>
+                <Button text="Orders" onAction="#handleOrders" styleClass="nav-button"/>
+                <Button text="Update order" onAction="#handleUpdate" styleClass="nav-button"/>
+            </HBox>
+
+            <!-- Connection Info Output -->
+            <TextArea fx:id="infoArea" prefWidth="500" prefHeight="150" wrapText="true" editable="false" styleClass="info-box"/>
+        </VBox>
+    </children>
+</AnchorPane>
