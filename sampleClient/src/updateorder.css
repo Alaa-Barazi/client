@@ -55,6 +55,7 @@
     -fx-border-color: black;
     -fx-border-width: 1;
 	-fx-cursor: hand;
+	-fx-border-radius: 4px;
 }
 
 .back-button:hover {

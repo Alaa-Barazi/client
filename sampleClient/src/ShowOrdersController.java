@@ -7,8 +7,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
+/**
+ * Class to control
+ */
 public class ShowOrdersController {
-
+	//Building table with relevant columns
 	@FXML
 	private TableView<Order> ordersTable;
 	@FXML
@@ -25,6 +28,9 @@ public class ShowOrdersController {
 	@FXML
 	private TableColumn<Order, Integer> subscriberIdCol;
 
+	/**
+	 * Initialize orders table with data
+	 */
 	@FXML
 	public void initialize() {
 		orderNumberCol.setCellValueFactory(new PropertyValueFactory<>("order_number"));
@@ -63,6 +69,9 @@ public class ShowOrdersController {
 		Main.clientConsole.accept("showAllOrders");
 	}
 
+	/**
+	 * By pressing back button, switch to the main page
+	 */
 	public void goBack() {
 		try {
 			Main.switchScene("MainPage.fxml");

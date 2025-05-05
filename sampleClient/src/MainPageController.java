@@ -27,6 +27,9 @@ public class MainPageController {
 		Main.clientConsole.accept("clientDetails");
 	}
 
+	/**
+	 * Switch to ShowOrders screen
+	 */
 	public void handleOrders() {
 		try {
 			Main.switchScene("ShowOrder.fxml");
@@ -35,6 +38,9 @@ public class MainPageController {
 		}
 	}
 
+	/**
+	 * Switch to UpdateOrder screen
+	 */
 	public void handleUpdate() {
 		try {
 			Main.switchScene("UpdateOrder.fxml");

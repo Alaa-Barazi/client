@@ -6,6 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main screen of client GUI
+ */
 public class Main extends Application {
     private static Stage primaryStage;
     public static ClientConsole clientConsole;
@@ -17,6 +20,11 @@ public class Main extends Application {
         switchScene("MainPage.fxml");
     }
 
+    /**
+     * Method for changing the displayed screen according to button pressed and apply the correct CSS styling for that page.
+     * @param fxmlFile fxml file name to  load
+     * @throws Exception it might ne thrown if the file doesn't exist of wrong name...
+     */
     public static void switchScene(String fxmlFile) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
         Parent root = loader.load();
@@ -29,7 +37,7 @@ public class Main extends Application {
         }
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("JavaFX Client");
+        primaryStage.setTitle("AutoParkingReservation");
         primaryStage.show();
     }
 
