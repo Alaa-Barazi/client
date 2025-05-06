@@ -17,6 +17,11 @@ public class UpdateOrderController {
 	private DatePicker datePicker;
 	@FXML
 	private Label statusLabel;
+	private Main mainApp;
+
+	public void setMainApp(Main mainApp) {
+		this.mainApp = mainApp;
+	}
 
 	@FXML
 	public void initialize() {
@@ -36,7 +41,7 @@ public class UpdateOrderController {
 		datePicker.setValue(LocalDate.now());
 
 		// Override ClientConsole to capture server response
-		Main.clientConsole = new ClientConsole("localhost", 5555) {
+		Main.clientConsole = new ClientConsole(Main.serverIP, 5555) {
 			@Override
 			public void display(Object message) {
 				Platform.runLater(() -> {
@@ -81,7 +86,7 @@ public class UpdateOrderController {
 
 	public void goBack() {
 		try {
-			Main.switchScene("MainPage.fxml");
+			mainApp.switchScene("MainPage.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

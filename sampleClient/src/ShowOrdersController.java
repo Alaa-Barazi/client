@@ -28,6 +28,11 @@ public class ShowOrdersController {
 	@FXML
 	private TableColumn<Order, Integer> subscriberIdCol;
 
+	private Main mainApp;
+	public void setMainApp(Main mainApp) {
+		this.mainApp = mainApp;
+	}
+	
 	/**
 	 * Initialize orders table with data
 	 */
@@ -48,7 +53,7 @@ public class ShowOrdersController {
 		ordersTable.setFocusTraversable(false);
 
 		// Replace Main.clientConsole with a temporary one to intercept the response
-		Main.clientConsole = new ClientConsole("localhost", 5555) {
+		Main.clientConsole = new ClientConsole(Main.serverIP, 5555) {
 			@Override
 			public void display(Object message) {
 				try {
@@ -74,7 +79,7 @@ public class ShowOrdersController {
 	 */
 	public void goBack() {
 		try {
-			Main.switchScene("MainPage.fxml");
+			mainApp.switchScene("MainPage.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
