@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	private static Stage primaryStage;
 	public static ClientConsole clientConsole;
-	public static String serverIP = "localhost";
+	public static String serverIP = "192.168.103.83";
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -60,11 +60,14 @@ public class Main extends Application {
 
 	@Override
 	public void stop() throws Exception {
-		if (clientConsole != null && clientConsole.client != null) {
+		Main.clientConsole.accept("disconnect");
+		Thread.sleep(100); // optional small delay
+		Main.clientConsole.client.closeConnection();
+		/*if (clientConsole != null && clientConsole.client != null) {
 			System.out.println("Client is shutting down");
 			clientConsole.client.closeConnection();
 		}
-		super.stop();
+		super.stop();*/
 	}
 
 }

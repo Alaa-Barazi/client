@@ -41,4 +41,17 @@ public class MainPageController {
             e.printStackTrace();
         }
     }
+    
+    @FXML
+	public void handleExit() {
+		try {
+			if (Main.clientConsole != null && Main.clientConsole.client != null) {
+				Main.clientConsole.client.closeConnection();
+				System.out.println("Client closed connection via Exit button");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Platform.exit(); // Close the JavaFX window
+	}
 }
