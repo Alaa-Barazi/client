@@ -10,7 +10,8 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	private static Stage primaryStage;
 	public static ClientConsole clientConsole;
-	public static String serverIP = "192.168.219.245";
+	public static String serverIP = "localhost";
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		primaryStage = stage;
@@ -41,7 +42,7 @@ public class Main extends Application {
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 
-		// Optional: apply specific CSS per scene
+		// Apply specific CSS per scene
 		if (fxmlFile.equals("ShowOrder.fxml")) {
 			scene.getStylesheets().add(Main.class.getResource("showorders.css").toExternalForm());
 		} else if (fxmlFile.equals("UpdateOrder.fxml")) {
@@ -56,4 +57,14 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	@Override
+	public void stop() throws Exception {
+		if (clientConsole != null && clientConsole.client != null) {
+			System.out.println("Client is shutting down");
+			clientConsole.client.closeConnection();
+		}
+		super.stop();
+	}
+
 }
