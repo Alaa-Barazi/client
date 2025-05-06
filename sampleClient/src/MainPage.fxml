@@ -18,7 +18,6 @@
 
             <!-- Connection Info Output -->
             <TextArea fx:id="infoArea" prefWidth="500" prefHeight="150" wrapText="true" editable="false" styleClass="info-box"/>
-       <Button fx:id="exitButton" text="Exit" onAction="#handleExit" layoutX="10" layoutY="200"/>
         </VBox>
     </children>
 </AnchorPane>
