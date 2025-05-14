@@ -20,10 +20,7 @@ public class Main extends Application {
 		switchScene("ippage.fxml");
 		//Thread.sleep(100);
 		
-		FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainPage.fxml"));
-		Parent mainRoot = loader.load();
-		mainPageScene = new Scene(mainRoot);
-		mainPageScene.getStylesheets().add(Main.class.getResource("mainpage.css").toExternalForm());
+		
 	}
 
 	public static void switchScene(String fxmlFile) throws Exception {
