@@ -2,9 +2,11 @@
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com 
 
-import ocsf.client.*;
-import common.*;
-import java.io.*;
+import java.io.IOException;
+
+import common.ChatIF;
+import data.Order;
+import ocsf.client.AbstractClient;
 
 /**
  * This class overrides some of the methods defined in the abstract superclass
@@ -24,6 +26,8 @@ public class ChatClient extends AbstractClient {
 	 */
 	ChatIF clientUI;
 
+	protected static Order order = null;
+	protected static boolean awaitResponse = false;
 	// Constructors ****************************************************
 
 	/**
@@ -37,7 +41,7 @@ public class ChatClient extends AbstractClient {
 	public ChatClient(String host, int port, ChatIF clientUI) throws IOException {
 		super(host, port); // Call the superclass constructor
 		this.clientUI = clientUI;
-		openConnection();
+		//openConnection();
 	}
 
 	// Instance methods ************************************************
@@ -48,6 +52,11 @@ public class ChatClient extends AbstractClient {
 	 * @param msg The message from the server.
 	 */
 	public void handleMessageFromServer(Object msg) {
+		awaitResponse = false;
+		if (msg instanceof Order) {
+			order = (Order) msg;
+			System.out.println("chat clobvh " + order);
+		}
 		clientUI.display(msg);
 	}
 
@@ -58,8 +67,20 @@ public class ChatClient extends AbstractClient {
 	 */
 	public void handleMessageFromClientUI(Object message) {
 		try {
+			awaitResponse = true;
 			sendToServer(message);
+			//wait for response
+			/*while(awaitResponse)
+			{
+				try {
+					Thread.sleep(100);
+				}
+				catch(InterruptedException e) {
+					e.printStackTrace();
+				}
+			}*/
 		} catch (IOException e) {
+			e.printStackTrace();
 			clientUI.display("Could not send message to server.  Terminating client.");
 			quit();
 		}

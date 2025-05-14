@@ -9,14 +9,23 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 	private static Stage primaryStage;
+	protected static Scene previousScene; // store previous scene
+	protected static Scene mainPageScene; //store the main scene
+
 	public static ClientConsole clientConsole;
-	public static String serverIP = "192.168.103.83";
+	//set the ip to null before the set ip function
+	public static String serverIP =null;
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		primaryStage = stage;
-		clientConsole = new ClientConsole(serverIP, 5555);
-		switchScene("MainPage.fxml");
+		//start the ip page
+		switchScene("ippage.fxml");
+		FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainPage.fxml"));
+		Parent mainRoot = loader.load();
+		mainPageScene = new Scene(mainRoot);
+		mainPageScene.getStylesheets().add(Main.class.getResource("mainpage.css").toExternalForm());
+
 	}
 
 	/*
@@ -40,19 +49,33 @@ public class Main extends Application {
 	public static void switchScene(String fxmlFile) throws Exception {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
 		Parent root = loader.load();
+
+		// Save current scene as previous
+		previousScene = primaryStage.getScene();
+
 		Scene scene = new Scene(root);
 
-		// Apply specific CSS per scene
+		// Apply CSS conditionally
 		if (fxmlFile.equals("ShowOrder.fxml")) {
 			scene.getStylesheets().add(Main.class.getResource("showorders.css").toExternalForm());
 		} else if (fxmlFile.equals("UpdateOrder.fxml")) {
 			scene.getStylesheets().add(Main.class.getResource("updateorder.css").toExternalForm());
+		} else if (fxmlFile.equals("OrderIDPage.fxml")) {
+			scene.getStylesheets().add(Main.class.getResource("orderid.css").toExternalForm());
 		}
 
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("AutoParking reservation");
 		primaryStage.show();
 	}
+	public static void goBackToPreviousScene() {
+		if (previousScene != null) {
+			primaryStage.setScene(previousScene);
+			primaryStage.setTitle("AutoParking reservation");
+			primaryStage.show();
+		}
+	}
+
 
 	public static void main(String[] args) {
 		launch(args);
@@ -60,9 +83,11 @@ public class Main extends Application {
 
 	@Override
 	public void stop() throws Exception {
-		Main.clientConsole.accept("disconnect");
-		Thread.sleep(100); // optional small delay
-		Main.clientConsole.client.closeConnection();
+		if (clientConsole != null && clientConsole.client != null) {
+			clientConsole.accept("disconnect");
+			Thread.sleep(100); // optional small delay
+			clientConsole.client.closeConnection();
+		}
 		/*if (clientConsole != null && clientConsole.client != null) {
 			System.out.println("Client is shutting down");
 			clientConsole.client.closeConnection();

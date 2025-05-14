@@ -1,11 +1,19 @@
 
+import java.sql.Date;
+import java.time.LocalDate;
+
+import data.Order;
 import data.UpdateOrderDetails;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-
-import java.sql.Date;
-import java.time.LocalDate;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.DateCell;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class UpdateOrderController {
 
@@ -17,7 +25,9 @@ public class UpdateOrderController {
 	private DatePicker datePicker;
 	@FXML
 	private Label statusLabel;
+
 	private Main mainApp;
+	private Order currentOrder;
 
 	public void setMainApp(Main mainApp) {
 		this.mainApp = mainApp;
@@ -60,6 +70,17 @@ public class UpdateOrderController {
 		};
 	}
 
+	public void loadOrder(Order order) {
+		try {
+			this.currentOrder = order;
+			this.orderNumberField.setText(Integer.toString(order.getOrder_number()));
+			this.parkingSpaceField.setText(Integer.toString(order.getParking_space()));
+			this.datePicker.setPromptText(order.getDate_of_placing_an_order().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void handleUpdate() {
 		try {
 			int orderNumber = Integer.parseInt(orderNumberField.getText().trim());
@@ -84,11 +105,13 @@ public class UpdateOrderController {
 		}
 	}
 
+	@FXML
 	public void goBack() {
-		try {
-			mainApp.switchScene("MainPage.fxml");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Stage currentStage = (Stage) orderNumberField.getScene().getWindow();
+		currentStage.setScene(Main.previousScene);
+		currentStage.setTitle("Order Lookup");
+		currentStage.show();
 	}
+
+
 }

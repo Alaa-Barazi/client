@@ -36,7 +36,7 @@ public class MainPageController {
 
 	public void handleUpdate() {
 		try {
-			Main.switchScene("UpdateOrder.fxml");
+			Main.switchScene("OrderIDPage.fxml");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ShowOrdersController"
+            prefWidth="900" prefHeight="500"
+            stylesheets="@showorders.css">
+    <children>
+        <VBox spacing="20" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
+            <!-- Title -->
+            <HBox alignment="CENTER">
+                <Label text="Orders Page" styleClass="page-title"/>
+            </HBox>
+
+            <!-- Table -->
+            <TableView fx:id="ordersTable" prefHeight="350">
+                <columns>
+                    <TableColumn fx:id="orderNumberCol" text="Order #" prefWidth="100"/>
+                    <TableColumn fx:id="parkingSpaceCol" text="Parking Space" prefWidth="130"/>
+                    <TableColumn fx:id="orderDateCol" text="Order Date" prefWidth="140"/>
+                    <TableColumn fx:id="confirmationCodeCol" text="Confirmation Code" prefWidth="140"/>
+                    <TableColumn fx:id="dateOfPlacingAnOrderCol" text="Placing Order Date" prefWidth="160"/>
+                    <TableColumn fx:id="subscriberIdCol" text="Subscriber ID" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <!-- Back Button -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Button text="Back" onAction="#goBack" styleClass="back-button"/>
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>
