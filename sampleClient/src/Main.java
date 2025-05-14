@@ -18,7 +18,7 @@ public class Main extends Application {
 
 		// Load IP input page only (no main page preload!)
 		switchScene("ippage.fxml");
-		Thread.sleep(100);
+		//Thread.sleep(100);
 		
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource("MainPage.fxml"));
 		Parent mainRoot = loader.load();
