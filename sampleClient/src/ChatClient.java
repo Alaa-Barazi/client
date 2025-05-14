@@ -69,16 +69,6 @@ public class ChatClient extends AbstractClient {
 		try {
 			awaitResponse = true;
 			sendToServer(message);
-			//wait for response
-			/*while(awaitResponse)
-			{
-				try {
-					Thread.sleep(100);
-				}
-				catch(InterruptedException e) {
-					e.printStackTrace();
-				}
-			}*/
 		} catch (IOException e) {
 			e.printStackTrace();
 			clientUI.display("Could not send message to server.  Terminating client.");

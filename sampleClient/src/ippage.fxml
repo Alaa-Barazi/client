@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="411.0" prefWidth="399.0" stylesheets="@ipPage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IpPageController">
+<AnchorPane prefHeight="411.0" prefWidth="399.0" stylesheets="@ippage.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IpPageController">
 
      <Label layoutX="174.0" layoutY="14.0" styleClass="page-title" text="Connect To The Server" />
 
