@@ -1,6 +1,11 @@
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class MainPageController {
 
@@ -36,10 +41,19 @@ public class MainPageController {
 
 	public void handleUpdate() {
 		try {
-			Main.switchScene("OrderIDPage.fxml");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("OrderIDPage.fxml"));
+			Parent root = loader.load();
+
+			Stage newWindow = new Stage();
+			newWindow.setTitle("Enter Order ID");
+			newWindow.setScene(new Scene(root));
+			newWindow.initOwner(((Stage) infoArea.getScene().getWindow()));
+			newWindow.initModality(Modality.APPLICATION_MODAL); // blocks main window
+			newWindow.showAndWait(); // waits until this window closes
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
 }

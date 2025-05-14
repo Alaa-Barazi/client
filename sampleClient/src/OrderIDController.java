@@ -46,7 +46,7 @@ public class OrderIDController {
 		ChatClient.order = null;
 		statusLabel.setText("");
 		Main.clientConsole.accept("OrderID " + id);
-		Thread.sleep(100);
+		Thread.sleep(1000);
 		statusLabel.setStyle("-fx-text-fill: red; -fx-font-weight: bold;");
 		if (ChatClient.order == null) {
 			statusLabel.setText("Order ID Not Found");
@@ -73,12 +73,6 @@ public class OrderIDController {
 	}
 
 
-	@FXML
-	public void goBack() {
-		Stage stage = (Stage) OrderIdtxt.getScene().getWindow();
-	    stage.setScene(Main.mainPageScene);
-	    stage.setTitle("Main Page");
-	    stage.show();
-	}
+
 
 }

@@ -55,7 +55,6 @@ public class ChatClient extends AbstractClient {
 		awaitResponse = false;
 		if (msg instanceof Order) {
 			order = (Order) msg;
-			System.out.println("chat clobvh " + order);
 		}
 		clientUI.display(msg);
 	}

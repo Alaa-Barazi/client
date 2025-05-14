@@ -34,19 +34,3 @@
 #btnOrderInfo:hover {
     -fx-background-color: #388e3c;
 }
-.back-button {
-    -fx-background-color: #1b5e79;
-    -fx-text-fill: white;
-    -fx-font-size: 13px;
-    -fx-padding: 8px 16px;
-    -fx-background-radius: 5px;
-    -fx-border-color: black;
-    -fx-border-width: 1;
-    -fx-font-weight: bold;
-    -fx-cursor: hand;
-    -fx-border-radius: 4px;
-}
-
-.back-button:hover {
-    -fx-background-color: #154c5b;
-}

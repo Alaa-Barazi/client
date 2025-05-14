@@ -29,7 +29,7 @@ public class Main extends Application {
 	public static void switchScene(String fxmlFile) throws Exception {
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxmlFile));
 		Parent root = loader.load();
-
+		
 		previousScene = primaryStage.getScene(); // optional
 
 		Scene scene = new Scene(root);

@@ -18,7 +18,6 @@
 		styleClass="green-field" />
 	<Button fx:id="btnSend" id="btnOrderInfo" text="Send"
 		onAction="#Send" styleClass="update-button" />
-	<Button fx:id="btnBack" id="btnBack" text="Back" onAction="#goBack" styleClass="back-button" />
 	<Label fx:id="statusLabel" />
 </VBox>
 
