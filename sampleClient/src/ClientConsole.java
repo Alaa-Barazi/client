@@ -2,14 +2,13 @@
 // "Object Oriented Software Engineering" and is issued under the open-source
 // license found at www.lloseng.com 
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Date;
 import java.util.ArrayList;
 
 import common.ChatIF;
 import data.Order;
+import data.ResponseWrapper;
 import data.UpdateOrderDetails;
 
 /**
@@ -49,7 +48,7 @@ public class ClientConsole implements ChatIF {
 		try {
 			client = new ChatClient(host, port, this);
 			client.openConnection();
-			//new client has connected to the server
+			// new client has connected to the server
 			accept("connect");
 		} catch (IOException exception) {
 			System.out.println("Error: Can't setup connection!" + " Terminating client.");
@@ -120,6 +119,7 @@ public class ClientConsole implements ChatIF {
 				System.out.println(list);
 			}
 		} else {
+
 			System.out.println(message);
 		}
 	}
@@ -175,7 +175,7 @@ public class ClientConsole implements ChatIF {
 	 * 
 	 * @param orderNumber  number of order to update it's values
 	 * @param parkingSpace new value of parkingSpace
-	 * @param dateStr   new value of orderDate
+	 * @param dateStr      new value of orderDate
 	 */
 	public void updateOrderDetails(int orderNumber, int parkingSpace, String dateStr) {
 		try {

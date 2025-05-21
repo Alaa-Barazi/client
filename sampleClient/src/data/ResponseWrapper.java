@@ -20,4 +20,9 @@ public class ResponseWrapper implements Serializable {
 		return data;
 	}
 
+	@Override
+	public String toString() {
+		return "ResponseWrapper [type=" + type + ", data=" + data + "]";
+	}
+
 }
