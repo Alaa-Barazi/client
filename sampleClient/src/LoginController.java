@@ -24,7 +24,6 @@ public class LoginController {
 
 	@FXML
 	private Label errorLabel;
-
 	private static Label errorLabelStatic;
 
 	private Image eyeOpen;
@@ -34,13 +33,10 @@ public class LoginController {
 	@FXML
 	public void initialize() {
 		errorLabelStatic = errorLabel;
-
 		eyeOpen = new Image(getClass().getResourceAsStream("/images/eye_open.png"));
 		eyeClosed = new Image(getClass().getResourceAsStream("/images/eye_closed.png"));
 		eyeIcon.setImage(eyeClosed);
 
-		// Attach a display handler only once (in Main or init app logic)
-		// Do NOT create a new clientConsole here
 
 		// Override ClientConsole to capture server response
 		Main.clientConsole = new ClientConsole(Main.serverIP, 5555) {
@@ -77,6 +73,9 @@ public class LoginController {
 		};
 	}
 
+	/**
+	 * method to toggle between the show password icon states
+	 */
 	@FXML
 	private void togglePasswordVisibility() {
 		showingPassword = !showingPassword;
@@ -98,6 +97,9 @@ public class LoginController {
 		}
 	}
 
+	/**
+	 * Method to activate the login button(check the username & password if they exists)
+	 */
 	@FXML
 	private void handleLogin() {
 		try {
